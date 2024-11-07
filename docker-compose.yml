@@ -1,0 +1,82 @@
+services:
+  wazuh:
+    image: wazuh/wazuh:4.2.5
+    container_name: wazuh-manager
+    restart: always
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+    networks:
+      - wazuh-net
+    ports:
+      - "1514:1514/udp"
+      - "55001:55000/tcp"  # Changed host port from 55000 to 55001
+
+  wazuh-kibana:
+    image: wazuh/wazuh-kibana:4.2.5
+    container_name: wazuh-kibana
+    restart: always
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - WAZUH_HOST=wazuh
+    networks:
+      - wazuh-net
+    depends_on:
+      - wazuh
+      - elasticsearch
+    ports:
+      - "5601:5601"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    networks:
+      - wazuh-net
+    ports:
+      - "9200:9200"
+
+  thehive:
+    image: thehiveproject/thehive:3.5.1-1
+    container_name: thehive
+    restart: always
+    environment:
+      - CORTEX_URL=http://cortex:9001
+      - CORTEX_KEY=th3H1v3ApiK3y2024!
+    networks:
+      - wazuh-net
+    depends_on:
+      - cortex
+    ports:
+      - "9000:9000"
+
+  cortex:
+    image: thehiveproject/cortex:3.1.1
+    container_name: cortex
+    restart: always
+    environment:
+      - CORTEX_ADMIN_PASSWORD=SecureCortexPassword2024!
+    networks:
+      - wazuh-net
+    depends_on:
+      - elasticsearch-cortex
+    ports:
+      - "9001:9001"
+
+  elasticsearch-cortex:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+    container_name: elasticsearch-cortex
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    networks:
+      - wazuh-net
+    ports:
+      - "9201:9200"
+
+networks:
+  wazuh-net:
+    driver: bridge
