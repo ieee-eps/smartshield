@@ -10,7 +10,7 @@ services:
       - wazuh-net
     ports:
       - "1514:1514/udp"
-      - "55001:55000/tcp"  # Changed host port from 55000 to 55001
+      - "55001:55000/tcp"  
 
   wazuh-kibana:
     image: wazuh/wazuh-kibana:4.2.5
