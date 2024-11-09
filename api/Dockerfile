@@ -1,7 +1,7 @@
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 WORKDIR /api
-COPY app.py .
+COPY . .
 
 RUN pip install fastapi uvicorn scikit-learn pandas numpy
 
