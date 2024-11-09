@@ -1,4 +1,12 @@
 services:
+  smartshield_api:
+    build:
+      context: ./api  # Path to your AI model's Dockerfile
+      dockerfile: Dockerfile
+    container_name: smartshield_api_service
+    ports:
+      - "8080:8080"
+      
   wazuh:
     image: wazuh/wazuh:4.2.5
     container_name: wazuh-manager
@@ -65,6 +73,8 @@ services:
       - elasticsearch-cortex
     ports:
       - "9001:9001"
+    volumes:
+      - ./cortex-data:/data
 
   elasticsearch-cortex:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2

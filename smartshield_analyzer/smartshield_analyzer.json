@@ -1,0 +1,31 @@
+{
+    "name": "smartshield_analyzer",
+    "displayName": "SmartShield Analyzer",
+    "version": "1.0",
+    "author": "IEEE-EPS",
+    "url": "https://github.com/ieee-eps/smartshield",
+    "license": "AGPL-V3",
+    "description": "Analyzer that uses the SmartShield AI model",
+    "dataTypeList": ["ip", "domain", "url", "hash", "mail"],
+    "baseConfig": "CortexAnalyzers",
+    "config": {
+      "url": {
+        "type": "string",
+        "description": "URL of the SmartShield AI model API",
+        "required": true,
+        "default": "http://smartshield_api_service:8080/analyze"
+      },
+      "api_key": {
+        "type": "string",
+        "description": "API key for authentication",
+        "required": true
+      },
+      "verify_ssl": {
+        "type": "boolean",
+        "description": "Verify SSL certificates",
+        "required": false,
+        "default": true
+      }
+    }
+  }
+  
