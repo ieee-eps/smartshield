@@ -13,7 +13,7 @@
         "type": "string",
         "description": "URL of the SmartShield AI model API",
         "required": true,
-        "default": "http://smartshield_api_service:8080/analyze"
+        "default": "http://smartshield_api_service:8080"
       },
       "api_key": {
         "type": "string",

@@ -16,7 +16,7 @@ This repository contains a Docker Compose configuration to set up the following 
 3. Run the Docker Compose command to start all services:
 
    ```bash
-   docker-compose up
+   docker-compose updoc
    ```
 
 4. Access the services using the following URLs:

@@ -1,7 +1,7 @@
 services:
   smartshield_api:
     build:
-      context: ./api  # Path to your AI model's Dockerfile
+      context: ./api
       dockerfile: Dockerfile
     container_name: smartshield_api_service
     ports:
@@ -62,7 +62,7 @@ services:
       - "9000:9000"
 
   cortex:
-    image: thehiveproject/cortex:3.1.1
+    image: thehiveproject/cortex:3.1.8
     container_name: cortex
     restart: always
     environment:
@@ -71,10 +71,11 @@ services:
       - wazuh-net
     depends_on:
       - elasticsearch-cortex
+    volumes:
+     - ./analyzers:/opt/cortex/analyzers
     ports:
       - "9001:9001"
-    volumes:
-      - ./cortex-data:/data
+
 
   elasticsearch-cortex:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
