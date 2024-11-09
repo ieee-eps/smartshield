@@ -1,7 +1,7 @@
 services:
   smartshield_api:
     build:
-      context: ./api  # Path to your AI model's Dockerfile
+      context: ./api
       dockerfile: Dockerfile
     container_name: smartshield_api_service
     ports:
