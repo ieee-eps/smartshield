@@ -10,7 +10,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
 def feature_engineering(data, integer_cols, float_cols, binary_cols, nominal_cols_one_hot=['proto', 'state', 'service'],
                         binary_col='attack_cat'):
     data_fe = data.copy()
@@ -108,8 +107,6 @@ def list_models_api():
 @app.post("/{model}/predict")
 async def predict_api_post(model: str, payload: DataDict):
     data = payload.data
-
-    print(data)
 
     if not model_config.exists_model(model):
         return {
