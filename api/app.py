@@ -82,7 +82,7 @@ def read_root():
     return {
         "status": 200,
         "success": True,
-        "message": "Welcome to the IEEE *** SB CS TSYP Challenge API !",
+        "message": "Welcome to the IEEE EPS SB CS TSYP Challenge API !",
         "did_u_know": [
             "we love IEEE",
             "Our chair is the best, but which chair ?",
