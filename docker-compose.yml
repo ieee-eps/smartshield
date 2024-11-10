@@ -72,7 +72,7 @@ services:
     depends_on:
       - elasticsearch-cortex
     volumes:
-     - ./analyzers:/opt/cortex/analyzers
+      - ./analyzers:/opt/cortex/analyzers
     ports:
       - "9001:9001"
 
