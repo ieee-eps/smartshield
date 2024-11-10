@@ -3,6 +3,7 @@ import Layout from "./components/ui/Layout";
 import Card from "./components/Card";
 import Effect from "./components/Effect";
 import Ignore from "./components/Ignore";
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography} from "@mui/material";
 
 
 export default function Accueil() {
@@ -32,5 +33,29 @@ export default function Accueil() {
                 13 days
             </Card>
         </Layout>
+        <White height={50}/>
+        <Typography variant={"h4"}>
+            LAST INCIDENTS
+        </Typography>
+        <White height={50}/>
+        <TableContainer component={Paper} sx={{
+            maxWidth: "800px"
+        }}>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>ID</TableCell>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Severity</TableCell>
+                        <TableCell>Reported at</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableRow>
+                        <TableCell align={"center"} colspan={4}><i>No incidents reported</i></TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </TableContainer>
     </>
 }

@@ -3,6 +3,7 @@ import {Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography
 import Layout from "./components/ui/Layout.js";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import CortexCom from "../CortexCom";
 
 
 export default function Settings() {
@@ -40,7 +41,6 @@ export default function Settings() {
                 value={username}
                 onInput={e => {
                     setUsername(e.target.value);
-                    localStorage.setItem("cortex-username", e.target.value)
                 }}></TextField>
             <TextField
                 type={"password"}
@@ -48,21 +48,16 @@ export default function Settings() {
                 value={password}
                 onInput={e => {
                     setPassword(e.target.value);
-                    localStorage.setItem("cortex-password", e.target.value)
                 }}></TextField>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Organization</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={organization || "No organization selected"}
-                    label="Organization"
-                    onChange={(e) => setOrganization(e.target.value)}
-                >
-                    <MenuItem value={""}>A</MenuItem>
-                </Select>
-            </FormControl>
-            <Button variant="contained">Login</Button>
+            <Button variant="contained" onClick={async () => {
+                let data = CortexCom.authenticate(username, password)
+                if(data?.session) {
+                    localStorage.setItem("cortex-username", username);
+                    localStorage.setItem("cortex-password", password);
+                    localStorage.setItem("cortex-session", data.session);
+                    location.href = location.href
+                }
+            }}>Login</Button>
         </Layout>
     </>
 }
