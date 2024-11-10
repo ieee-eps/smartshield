@@ -1,0 +1,33 @@
+@import "fonts/fonts.css";
+
+@import "./md/dark-mc.css";
+@import "./md/dark-hc.css";
+@import "./md/dark.css";
+@import "./md/light-mc.css";
+@import "./md/light-hc.css";
+@import "./md/light.css";
+
+body {
+    margin: 0;
+}
+
+#root {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    font-family: "Roboto", sans-serif;
+    top: 0;
+    left: 0;
+    background-color: var(--md-sys-color-surface-dim);
+    color: var(--md-sys-color-inverse-surface);
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h1.spaced-letters {
+    letter-spacing: .14em;
+}

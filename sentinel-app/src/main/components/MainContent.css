@@ -1,0 +1,21 @@
+#main {
+    display: flex;
+    width: calc(100vw - 60px);
+    height: calc(100vh - 60px);
+    position: relative;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    overflow: auto;
+}
+
+body:has(#nav-bar) #main {
+    left: 60px;
+    width: calc(100vw - 120px);
+}
+
+#main.centered {
+    justify-content: center;
+}

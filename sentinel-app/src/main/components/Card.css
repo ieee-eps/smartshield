@@ -1,0 +1,26 @@
+.card {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    min-width: 230px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 15px;
+    transition: background-color .3s;
+}
+
+.card > .title {
+    position: absolute;
+    bottom: .2em;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: .8em;
+}
+
+.card > .content {
+    font-size: 3em;
+    font-weight: bold;
+}

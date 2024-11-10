@@ -1,0 +1,17 @@
+@keyframes slowBlink {
+    from {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0.3;
+    }
+
+    60% {
+        opacity: 1;
+    }
+}
+
+.effect-slowBlink {
+    animation: slowBlink 2s infinite;
+}
